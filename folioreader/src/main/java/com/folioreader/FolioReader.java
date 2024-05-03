@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Parcelable;
 import androidx.annotation.Nullable;
+import okhttp3.ResponseBody;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.folioreader.model.HighLight;
 import com.folioreader.model.HighlightImpl;
@@ -135,8 +136,8 @@ public class FolioReader {
         return singleton;
     }
 
-    public static void loadEbookFromUrl(ResponseBody body) {
-        FileUtil.saveEpubToFile(body,context, new FileUtils.SaveEpubCallback() {
+    public static void loadEbookFromUrl(ResponseBody body, Context context) {
+        FileUtil.saveEpubToFile(body, context, new FileUtil.SaveEpubCallback() {
             @Override
             public void onSaveComplete(File file) {
                 openBook(file.getAbsolutePath());
@@ -144,6 +145,7 @@ public class FolioReader {
 
             @Override
             public void onSaveError(String errorMessage) {
+                // Xử lý lỗi tại đây
             }
         });
     }
