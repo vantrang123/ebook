@@ -141,9 +141,6 @@ public class FileUtil {
 
             Log.e("downloadEpub", "File saved successfully: " + file.getAbsolutePath());
             callback.onSaveComplete(file);
-
-            FolioReader folioReader = FolioReader.get();
-            folioReader.openBook(file.getAbsolutePath());
         } catch (IOException e) {
             Log.e("downloadEpub", "Error saving file: " + e.getMessage());
             callback.onSaveError(e.getMessage());

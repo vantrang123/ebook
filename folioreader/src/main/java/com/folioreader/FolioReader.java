@@ -142,7 +142,8 @@ public class FolioReader {
         FileUtil.saveEpubToFile(body, context, new FileUtil.SaveEpubCallback() {
             @Override
             public void onSaveComplete(File file) {
-                openBook(file.getAbsolutePath());
+                FolioReader folioReader = FolioReader.get();
+                folioReader.openBook(file.getAbsolutePath());
             }
 
             @Override
