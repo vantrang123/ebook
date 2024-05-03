@@ -9,6 +9,8 @@ import android.util.Log;
 import com.folioreader.Constants;
 import com.folioreader.ui.activity.FolioActivity;
 import com.folioreader.FolioReader;
+import java.io.File;
+import okhttp3.ResponseBody;
 
 import java.io.*;
 
@@ -140,7 +142,7 @@ public class FileUtil {
             Log.e("downloadEpub", "File saved successfully: " + file.getAbsolutePath());
             callback.onSaveComplete(file);
 
-            FolioReader folioReader = new FolioReader();
+            FolioReader folioReader = FolioReader.get();
             folioReader.openBook(file.getAbsolutePath());
         } catch (IOException e) {
             Log.e("downloadEpub", "Error saving file: " + e.getMessage());
