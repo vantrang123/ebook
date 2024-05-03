@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import com.folioreader.Constants;
 import com.folioreader.ui.activity.FolioActivity;
+import com.folioreader.FolioReader
 
 import java.io.*;
 
@@ -143,7 +144,7 @@ public class FileUtil {
             folioReader.openBook(file.getAbsolutePath());
         } catch (IOException e) {
             Log.e("downloadEpub", "Error saving file: " + e.getMessage());
-            callback.onSaveError(errorMessage);
+            callback.onSaveError(e.getMessage());
         }
     }
 
