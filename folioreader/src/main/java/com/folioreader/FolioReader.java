@@ -135,7 +135,7 @@ public class FolioReader {
         return singleton;
     }
 
-    public loadEbookFromUrl(ResponseBody body) {
+    public static void loadEbookFromUrl(ResponseBody body) {
         FileUtil.saveEpubToFile(body,context, new FileUtils.SaveEpubCallback() {
             @Override
             public void onSaveComplete(File file) {
@@ -145,7 +145,7 @@ public class FolioReader {
             @Override
             public void onSaveError(String errorMessage) {
             }
-        })
+        });
     }
 
     public FolioReader openBook(int rawId) {
