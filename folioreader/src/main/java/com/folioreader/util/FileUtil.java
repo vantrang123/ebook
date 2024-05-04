@@ -126,7 +126,9 @@ public class FileUtil {
     public static void saveEpubToFile(ResponseBody body, Context context, SaveEpubCallback callback) {
         try {
             File fileDir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
-            File file = new File(fileDir, "downloaded_file.epub");
+            File file = new File(getFolioEpubFolderPath("downloaded_file.epub"));
+            file.mkdirs();
+//            File file = new File(fileDir, "downloaded_file.epub");
             InputStream inputStream = body.byteStream();
             FileOutputStream outputStream = new FileOutputStream(file);
             byte[] buffer = new byte[4096];
