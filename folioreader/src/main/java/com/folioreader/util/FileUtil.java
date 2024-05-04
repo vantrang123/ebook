@@ -125,7 +125,7 @@ public class FileUtil {
 
     public static void saveEpubToFile(ResponseBody body, Context context, SaveEpubCallback callback) {
         try {
-            File fileDir = new File(context.getExternalFilesDir(null).getParentFile(), "files/Download/folioreader");
+            File fileDir = new File(getFolioEpubFolderPath(""));
             if (!fileDir.exists()) {
                 fileDir.mkdirs();
             }
