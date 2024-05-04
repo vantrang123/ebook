@@ -138,7 +138,7 @@ public class FolioReader {
         return singleton;
     }
 
-    public static void loadEbookFromUrl(ResponseBody body) {
+    public void loadEbookFromUrl(ResponseBody body) {
         FileUtil.saveEpubToFile(body, context, new FileUtil.SaveEpubCallback() {
             @Override
             public void onSaveComplete(File file) {
