@@ -109,20 +109,22 @@ public class MediaController {
                     mTextToSpeech.setSpeechRate(0.70f);
                 }
 
-                mTextToSpeech.setOnUtteranceCompletedListener(
-                        new TextToSpeech.OnUtteranceCompletedListener() {
-                            @Override
-                            public void onUtteranceCompleted(String utteranceId) {
-                                ((AppCompatActivity) context).runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (mIsSpeaking) {
-                                            callbacks.highLightTTS();
+                if (null != mTextToSpeech) {
+                    mTextToSpeech.setOnUtteranceCompletedListener(
+                            new TextToSpeech.OnUtteranceCompletedListener() {
+                                @Override
+                                public void onUtteranceCompleted(String utteranceId) {
+                                    ((AppCompatActivity) context).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (mIsSpeaking) {
+                                                callbacks.highLightTTS();
+                                            }
                                         }
-                                    }
-                                });
-                            }
-                        });
+                                    });
+                                }
+                            });
+                }
             }
         });
     }
